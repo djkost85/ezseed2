@@ -253,6 +253,10 @@ module.exports.processMovies = function(params, callback) {
 				} else {
 					//Call to allocine-api to gather infos
 					release.getMovieInformations(e, function(err, infos) {
+						if(err) {
+							console.error("Movie error", err, infos);
+						}
+
 						movies.push({
 							movieType : e.movieType,
 							name : e.name,
