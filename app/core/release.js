@@ -235,6 +235,8 @@ module.exports.getTags  = {
 var getAlbumInformations = function(album, cb) {
 	var search = album.album !== null && album.artist !== null ? album.artist + ' ' + album.album : null;
 
+	console.log('Gathering infos on', search);
+
 	if(search === null) {
 		if(album.album !== null)
 			search = album.album;
