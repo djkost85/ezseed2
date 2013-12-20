@@ -3,12 +3,12 @@ var _ = require('underscore')
   , mdb = require('moviedb')('7c5105894b0446bb59b01a30cf235f3b')
   , jf = require('jsonfile');
 
-// jf.writeFileSync(
-// 	global.config.root + '/node_modules/moviedb/lib/endpoints.json', 
-// 	jf.readFileSync(__dirname + '/themoviedb.json')
-// );
-
 var getMovieInformations = function(movie, cb) {
+
+	jf.writeFileSync(
+		global.config.root + '/node_modules/moviedb/lib/endpoints.json', 
+		jf.readFileSync(__dirname + '/themoviedb.json')
+	);
 
 	console.log('Gathering infos on', movie.name);
 
