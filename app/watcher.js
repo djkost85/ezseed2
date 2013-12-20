@@ -27,6 +27,8 @@ db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function callback () {
   console.log('DB opened successfuly !');
 
+  console.log(global.config);
+
   require('./core/watcher.js').initFetch();
 
   async.whilst(
