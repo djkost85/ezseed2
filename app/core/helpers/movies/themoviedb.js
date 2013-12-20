@@ -16,6 +16,8 @@ var getMovieInformations = function(movie, cb) {
 	
 	var type = movie.movieType == 'movie' ? 'Movie' : 'TV';
 
+	console.log('search'+type);
+
 	mdb['search'+type]({query: movie.name}, function(err, res){
 
 		console.log('Search done ?');
@@ -81,7 +83,7 @@ var getMovieInformations = function(movie, cb) {
 	      			movie.picture = infos.poster_path !== undefined ? infos.poster_path : null;
 	      			movie.synopsis = null;
 	      		}
-	      		
+
                 return cb(err, movie);
 
 			});
