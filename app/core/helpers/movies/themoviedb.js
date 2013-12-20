@@ -1,6 +1,6 @@
 var _ = require('underscore')
   , _s = require('underscore.string')
-  , mdb = require('moviedb')('7c5105894b0446bb59b01a30cf235f3b')
+  , mdb = require('tmdbv3').init('7c5105894b0446bb59b01a30cf235f3b')
   , jf = require('jsonfile');
 
 var getMovieInformations = function(movie, cb) {
@@ -18,8 +18,8 @@ var getMovieInformations = function(movie, cb) {
 
 	console.log(mdb, 'search'+type);
 
-	mdb.searchMovie({query: movie.name}, function(err, res){
-		
+	mdb['search'+type]({query: movie.name}, function(err, res){
+
 		if(err)
 			console.error(err);
 
@@ -65,7 +65,7 @@ var getMovieInformations = function(movie, cb) {
 
 			movie.code = infos[index].id;
 
-			mdb[type]({id: movie.code}, function(err, result) {
+			mdb[type+'Info']({id: movie.code}, function(err, result) {
 	          	console.log('Founded specific infos on', movie.name);
 
 

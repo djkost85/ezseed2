@@ -15,12 +15,15 @@
           , "List"  : { "resource": "search/list", "method": "get" }
           , "Company"  : { "resource": "search/company", "method": "get" }
           , "Keyword"  : { "resource": "search/keyword", "method": "get" }
-          , "TV"        : { "resource": "search/tv", "method": "get"}
+          , "TV"      : {"resource": "search/tv", "method": "get"}
         }
       , "collection" : {
             "Info"  : { "resource": "collection/:id", "method": "get" }
           , "Images"  : { "resource": "collection/:id/images", "method": "get" }
         }
+      , "TV" : {
+        "Info" : { "resource": "tv/:id", "method": "get"}
+      }
       , "movie" : {
             "Info" : { "resource": "movie/:id", "method": "get" }
           , "AlternativeTitles" : { "resource": "movie/:id/alternative_titles", "method": "get" }
