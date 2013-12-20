@@ -49,6 +49,7 @@
     "colors": "~0.6.2",
     "connect-mongo": "~0.3.3",
     "request": "~2.27.0",
-    "node-markdown": "~0.1.1"
+    "node-markdown": "~0.1.1",
+    "moviedb": "~0.1.0"
   }
 }
