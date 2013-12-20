@@ -253,5 +253,5 @@ var getAlbumInformations = function(album, cb) {
 
 module.exports.getAlbumInformations = getAlbumInformations;
 
-module.exports.getMovieInformations = require(__dirname + '/helpers/movies/themoviedb.js');
+module.exports.getMovieInformations = require(__dirname + '/helpers/movies/allocine.js');
 
