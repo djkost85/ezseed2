@@ -24,7 +24,7 @@
       , "TV" : {
         "Info" : { "resource": "tv/:id", "method": "get"}
       }
-      , "movie" : {
+      , "Movie" : {
             "Info" : { "resource": "movie/:id", "method": "get" }
           , "AlternativeTitles" : { "resource": "movie/:id/alternative_titles", "method": "get" }
           , "Casts" : { "resource": "movie/:id/casts", "method": "get" }
