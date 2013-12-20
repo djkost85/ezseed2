@@ -253,7 +253,6 @@ var getAlbumInformations = function(album, cb) {
 
 module.exports.getAlbumInformations = getAlbumInformations;
 
-console.log(global);
 
 module.exports.getMovieInformations = require(__dirname + '/helpers/movies/themoviedb');
 
