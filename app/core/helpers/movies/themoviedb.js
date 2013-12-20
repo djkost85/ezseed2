@@ -20,6 +20,8 @@ var getMovieInformations = function(movie, cb) {
 	  	if(err)
 			return cb(err, movie);
 
+		console.log('Search', movie.name, res.results);
+
 		var infos = res.results;
 
 		if(infos.length) {
