@@ -261,12 +261,14 @@ var getMovieInformations = function(movie, cb) {
 	//searching in the allocine API (could be others)
   	allocine.api('search', { q:movie.name, filter: movie.movieType, count: '5'}, function(err, res) {
 
-  		console.log('Infos on', movie.name, res);
-
   		if(err) return cb(err, movie);
 
   		if(!_.isUndefined(res.feed)) {
       		var infos = Object.byString(res.feed, movie.movieType);
+
+
+  		console.log('Infos on', movie.name, infos);
+
 
       		if(infos !== undefined) {
 
