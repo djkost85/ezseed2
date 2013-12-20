@@ -17,6 +17,10 @@ var getMovieInformations = function(movie, cb) {
 	var type = movie.movieType == 'movie' ? 'Movie' : 'TV';
 
 	mdb['search'+type]({query: movie.name, page: 1, year: movie.year }, function(err, res){
+
+		if(err)
+			console.error(err);
+
 	  	if(err)
 			return cb(err, movie);
 
