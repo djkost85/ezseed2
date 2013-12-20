@@ -1,6 +1,6 @@
 var _ = require('underscore')
   , _s = require('underscore.string')
-  , mdb = require('tmdbv3').init('7c5105894b0446bb59b01a30cf235f3b')
+  , mdb = require('moviedv')('7c5105894b0446bb59b01a30cf235f3b')
   , jf = require('jsonfile');
 
 var getMovieInformations = function(movie, cb) {
