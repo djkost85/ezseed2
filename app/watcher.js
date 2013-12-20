@@ -31,6 +31,7 @@ db.once('open', function callback () {
   async.whilst(
 		function() { return true; },
 		function(callback) {
+			console.log("Calling Watcher");
 			database.paths.getAll(function(err, docs) {
 				var paths = [];
 
