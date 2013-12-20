@@ -261,11 +261,8 @@ var getMovieInformations = function(movie, cb) {
 	//searching in the allocine API (could be others)
   	allocine.api('search', { q:movie.name, filter: movie.movieType, count: '5'}, function(err, res) {
 
-  		if(err) {
-  			console.error('Allocine error', err);
+  		if(err)
 			return cb(err, movie);
-
-  		} 
 
   		if(!_.isUndefined(res.feed)) {
       		var infos = Object.byString(res.feed, movie.movieType);
@@ -308,6 +305,10 @@ var getMovieInformations = function(movie, cb) {
 
           		//Searching for a specific code
           		allocine.api(movie.movieType, {code: movie.code}, function(err, result) { 
+
+          			if(err)
+          				console.error(err);
+
           			var specific_infos = Object.byString(result, movie.movieType);
 
           			console.log('Founded specific infos on', movie.name);
