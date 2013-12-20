@@ -310,6 +310,8 @@ var getMovieInformations = function(movie, cb) {
           		allocine.api(movie.movieType, {code: movie.code}, function(err, result) { 
           			var specific_infos = Object.byString(result, movie.movieType);
 
+          			console.log('Founded specific infos on', movie.name);
+
           			if(specific_infos) {
 	          			movie.title = specific_infos.title !== undefined ? specific_infos.title : specific_infos.originalTitle;
 	          			movie.synopsis = specific_infos.synopsis ? _s.trim(specific_infos.synopsis.replace(/(<([^>]+)>)/ig, '')) : '';

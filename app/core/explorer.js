@@ -70,11 +70,11 @@ exports.explore = function(params, cb) {
 						    	});
 						    },
 						    movies : function(callback) {
-						    	// console.time('movies');
+						    	console.time('movies');
 						    	parser.processMovies({pathToWatch : pathToWatch, videos: videos, existing: existing.movies}, function(err, movies) {
 						    		
 						    		db.files.movies.save({movies : movies, id_path : id_path}, function(err) {
-						    			// console.timeEnd('movies');
+						    			console.timeEnd('movies');
 						    			callback(err, movies);
 									});
 
