@@ -264,8 +264,11 @@ var getMovieInformations = function(movie, cb) {
   		if(err)
 			return cb(err, movie);
 
+
   		if(!_.isUndefined(res.feed)) {
       		var infos = Object.byString(res.feed, movie.movieType);
+
+			console.log('Infos on ', movie.name, infos);
 
       		if(infos !== undefined) {
 
