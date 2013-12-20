@@ -16,15 +16,15 @@ var getMovieInformations = function(movie, cb) {
 	
 	var type = movie.movieType == 'movie' ? 'Movie' : 'TV';
 
-	console.log(mdb, 'search'+type);
-
 	mdb['search'+type]({query: movie.name}, function(err, res){
+
+		console.log('Search done ?');
 
 		if(err)
 			console.error(err);
 
-	  	if(err)
-			return cb(err, movie);
+	  // 	if(err)
+			// return cb(err, movie);
 
 		console.log('Search', movie.name, res.results);
 
@@ -81,6 +81,8 @@ var getMovieInformations = function(movie, cb) {
 	      			movie.picture = infos.poster_path !== undefined ? infos.poster_path : null;
 	      			movie.synopsis = null;
 	      		}
+	      		
+                return cb(err, movie);
 
 			});
 		} else {
