@@ -306,6 +306,8 @@ var getMovieInformations = function(movie, cb) {
 
           		movie.code = infos[index].code;
 
+          		console.log('Searching specific infos', movie.movieType, {code: movie.code});
+
           		//Searching for a specific code
           		allocine.api(movie.movieType, {code: movie.code}, function(err, result) { 
 
