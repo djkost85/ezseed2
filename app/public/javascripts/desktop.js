@@ -181,76 +181,78 @@ define([
             
             self.render.files(datas, function(err, html) {
                 if(err)
-                    console.log(err);
+                    console.error(err);
 
-                var $items = $.parseHTML(html), $els = [];
+                if(html) {
+                    var $items = $.parseHTML(html), $els = [];
 
-                _.each($items, function(e) {
-                    var isTxt = e instanceof Text; //parseHTML causes element duplicated
+                    _.each($items, function(e) {
+                        var isTxt = e instanceof Text; //parseHTML causes element duplicated
 
-                    if(!isTxt)
-                        $els.push(e);
-                    
-                });
+                        if(!isTxt)
+                            $els.push(e);
+                        
+                    });
 
-                $items = $els;
-                delete $els;
+                    $items = $els;
+                    delete $els;
 
-                $items.sort(function (a, b) {
-                    a = $(a), b = $(b); //jquerying -"-
-                    if (a.data('date-added') == b.data('date-added')) {
-                        return 0;
-                    } else if (a.data('date-added') < b.data('date-added')) {
-                        return 1;
-                    }
-                    return -1;
-                });
-
-                if(self.firstLoad) {
-                    self.$container.addClass('notransition').css('visibility', 'hidden').append($items);
-
-                    self.pckry.appended($items);
-                } else {
-                    self.$container.addClass('notransition').css('visibility', 'hidden').prepend($items);
-
-                    self.pckry.prepended($items);
-                }
-
-                self.displaySelector = displayOption;
-
-                self.layout(displayOption, function() { 
+                    $items.sort(function (a, b) {
+                        a = $(a), b = $(b); //jquerying -"-
+                        if (a.data('date-added') == b.data('date-added')) {
+                            return 0;
+                        } else if (a.data('date-added') < b.data('date-added')) {
+                            return 1;
+                        }
+                        return -1;
+                    });
 
                     if(self.firstLoad) {
-                        self.firstLoad = false;
+                        self.$container.addClass('notransition').css('visibility', 'hidden').append($items);
 
-                        if(self.toRemove) {
-                            self.remove(self.toRemove);
-                            self.toRemove = null;
-                            location.hash = '#';
-                        }
-
-                        self.loader();
+                        self.pckry.appended($items);
                     } else {
-                        var count = 0, els = [];
+                        self.$container.addClass('notransition').css('visibility', 'hidden').prepend($items);
 
-                        _.each($items, function(e) {
-                                if($(e).hasClass('list'))
-                                    els.push($(e));
-                        });
-
-                        count = els.length;
-
-                        if(count == 1) {
-                            var titre = els[0].find('h1').text();
-                            self.showNotification({title: 'Fichier ajouté',text: titre + ' ajouté !'});
-                        } else if(count != 0) {
-                            self.showNotification({title: 'Fichiers ajoutés',text: count + ' fichiers ajoutés'});
-                        }
+                        self.pckry.prepended($items);
                     }
 
-                    self.$container.removeClass('notransition').css('visibility', 'visible');
+                    self.displaySelector = displayOption;
 
-                });
+                    self.layout(displayOption, function() { 
+
+                        if(self.firstLoad) {
+                            self.firstLoad = false;
+
+                            if(self.toRemove) {
+                                self.remove(self.toRemove);
+                                self.toRemove = null;
+                                location.hash = '#';
+                            }
+
+                            self.loader();
+                        } else {
+                            var count = 0, els = [];
+
+                            _.each($items, function(e) {
+                                    if($(e).hasClass('list'))
+                                        els.push($(e));
+                            });
+
+                            count = els.length;
+
+                            if(count == 1) {
+                                var titre = els[0].find('h1').text();
+                                self.showNotification({title: 'Fichier ajouté',text: titre + ' ajouté !'});
+                            } else if(count != 0) {
+                                self.showNotification({title: 'Fichiers ajoutés',text: count + ' fichiers ajoutés'});
+                            }
+                        }
+
+                        self.$container.removeClass('notransition').css('visibility', 'visible');
+
+                    });
+                }
             });
         },
         countElementsByLetter : function() {
@@ -277,6 +279,7 @@ define([
             $(self.itemSelector + '.miniature').css('visibility', 'hidden');
 
             //Make it async is way toooo long
+            if()
             imagesLoaded(
                 document.querySelector('#' + self.$container.attr('id') + ' .miniature'), 
             function() {
