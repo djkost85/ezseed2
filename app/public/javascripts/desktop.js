@@ -279,7 +279,6 @@ define([
             $(self.itemSelector + '.miniature').css('visibility', 'hidden');
 
             //Make it async is way toooo long
-            if()
             imagesLoaded(
                 document.querySelector('#' + self.$container.attr('id') + ' .miniature'), 
             function() {
