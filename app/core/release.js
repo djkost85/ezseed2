@@ -253,5 +253,7 @@ var getAlbumInformations = function(album, cb) {
 
 module.exports.getAlbumInformations = getAlbumInformations;
 
-module.exports.getMovieInformations = require(__dirname + '/helpers/movies/' + global.config.movieScrapper);
+console.log(global);
+
+module.exports.getMovieInformations = require(__dirname + '/helpers/movies/themoviedb');
 
