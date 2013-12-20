@@ -6,7 +6,7 @@ var _ = require('underscore')
 var getMovieInformations = function(movie, cb) {
 
 	jf.writeFileSync(
-		global.config.root + '/node_modules/moviedb/lib/endpoints.json', 
+		global.config.root + '/../node_modules/moviedb/lib/endpoints.json', 
 		jf.readFileSync(__dirname + '/themoviedb.json')
 	);
 
