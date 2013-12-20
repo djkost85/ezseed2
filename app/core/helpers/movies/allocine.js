@@ -1,4 +1,4 @@
-var _ = require('underscore');
+var _ = require('underscore')
   , _s = require('underscore.string')
   , allocine = require('allocine-api');
 
